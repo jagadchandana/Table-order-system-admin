@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login/{provider}', [SocialAuthController::class,'redirectToProvider']);
+Route::get('/login/{provider}/callback', [SocialAuthController::class,'handleProviderCallback']);
 
 Route::get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard');
 Route::get('/table', [DashBoardController::class, 'table'])->name('table');
