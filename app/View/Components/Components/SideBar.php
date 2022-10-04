@@ -23,6 +23,7 @@ class SideBar extends Component
      */
     public function render()
     {
-        return view('components.side-bar');
+        return view('components.side-bar',[
+            'cRout'=>request()->route()->getName()]);
     }
 }
