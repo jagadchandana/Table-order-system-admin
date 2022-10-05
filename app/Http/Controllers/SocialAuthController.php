@@ -10,6 +10,9 @@ use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\JsonResponse;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class SocialAuthController extends Controller
 {
@@ -67,7 +70,13 @@ class SocialAuthController extends Controller
             ]
         );
         $token = $userCreated->createToken('token-name')->plainTextToken;
+        event(new Registered($userCreated));
 
+        Auth::login($userCreated);
+
+        return redirect(RouteServiceProvider::HOME);
+
+        return redirect()->route('dashboard');
         return response()->json($userCreated, 200, ['Access-Token' => $token]);
     }
 

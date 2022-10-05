@@ -86,7 +86,7 @@
               </div>
               <div class="row px-xl-5 px-sm-4 px-3">
                 <div class="col-3 ms-auto px-1">
-                  <a class="btn btn-outline-light w-100" href="{{ route('login'.'/'.'facebook') }}">
+                  <a class="btn btn-outline-light w-100" href="{{ route('login-facebook',$provider='facebook') }}">
                     <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink32">
                       <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="facebook-3" transform="translate(3.000000, 3.000000)" fill-rule="nonzero">
@@ -98,7 +98,7 @@
                   </a>
                 </div>
                 <div class="col-3 px-1">
-                  <a class="btn btn-outline-light w-100" href="javascript:;">
+                  <a class="btn btn-outline-light w-100" href="{{ route('login-github',$provider='github') }}">
                     <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="apple-black" transform="translate(7.000000, 0.564551)" fill="#000000" fill-rule="nonzero">
@@ -109,7 +109,7 @@
                   </a>
                 </div>
                 <div class="col-3 me-auto px-1">
-                  <a class="btn btn-outline-light w-100" href="">
+                  <a class="btn btn-outline-light w-100" href="{{ route('login-google',$provider = 'google') }}">
                     <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="google-icon" transform="translate(3.000000, 2.000000)" fill-rule="nonzero">
@@ -129,13 +129,19 @@
                 </div>
               </div>
               <div class="card-body">
-                <form form method="POST" action="{{ route('register') }}>
+                <form method="get" action="{{ route('register') }}>
                     @csrf
                   <div class="mb-3">
                     <input type="text" name="name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
+                    @error('name')
+                    <span class="text-danger error">{{ $message }}</span>
+                    @enderror
                   </div>
                   <div class="mb-3">
                     <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                  </div>
+                  <div class="mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                   </div>
                   <div class="mb-3">
                     <input type="password" name="password_confirmation" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">

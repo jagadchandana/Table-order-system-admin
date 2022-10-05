@@ -21,6 +21,7 @@
     Soft UI Dashboard by Creative Tim
   </title>
  <x-libraries.styles/>
+ @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
