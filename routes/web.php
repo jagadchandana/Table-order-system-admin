@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashBoardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard');
+Route::get('/table', [DashBoardController::class, 'table'])->name('table');
+
+
+require __DIR__.'/auth.php';
