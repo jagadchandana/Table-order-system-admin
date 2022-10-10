@@ -26,13 +26,14 @@
                       <h6 class="text-sm font-weight-normal mb-1">
                         <form action="{{ route('profile-index') }}" method="GET">
                         @csrf
-                       <button type="submit"><span class="font-weight-bold">Profile</span></button>
+                            <button type="submit"><span class="font-weight-bold">Profile</span>
+                                </h6>
+                                <p class="text-xs text-secondary mb-0 ">
+                                <i class="fa fa-mail me-1"></i>
+                                {{ Auth::user()->name }}
+                                </p>
+                            </button>
                         </form>
-                      </h6>
-                      <p class="text-xs text-secondary mb-0 ">
-                        <i class="fa fa-mail me-1"></i>
-                        {{ Auth::user()->name }}
-                      </p>
                     </div>
                   </div>
                 </a>
